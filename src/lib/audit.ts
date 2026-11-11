@@ -5,10 +5,10 @@ import { auditLog } from './db/schema';
 
 export async function logAudit(
   userId: number,
-  action: 'create' | 'update' | 'delete' | 'login' | 'csrf_reject',
+  action: 'create' | 'update' | 'delete' | 'login' | 'csrf_reject' | 'verify_site' | 'verify' | 'complete' | 'flag',
   entityType: string,
   entityId: number | null,
-  detail: string
+  detail: string | null
 ) {
   await db.insert(auditLog).values({ userId, action, entityType, entityId, detail });
 }
