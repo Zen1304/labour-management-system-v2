@@ -71,7 +71,11 @@ export function currentPayPeriod(): { start: string; end: string } {
 
 // ---------- Share splitting (same rule as pay-agreements.ts validateShares) ----------
 
-function splitAmount(amount: number, shares: { workerId: number; sharePercent: number | null }[]): Map<number, number> {
+// Exported for unit testing (see src/lib/entities/__tests__/payroll.test.ts)
+// — the same equal-split-when-every-share-is-null rule as
+// pay-agreements.ts's validateShares(), reused here for both Subcontract
+// lump sums and Piece Work team-entry splits.
+export function splitAmount(amount: number, shares: { workerId: number; sharePercent: number | null }[]): Map<number, number> {
   const result = new Map<number, number>();
   if (shares.length === 0) return result;
   const allEqual = shares.every((s) => s.sharePercent === null);
