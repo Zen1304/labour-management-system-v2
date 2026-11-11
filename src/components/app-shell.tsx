@@ -15,6 +15,7 @@ const NAV: { href: string; label: string; capability?: Capability }[] = [
   { href: '/attendance', label: 'Attendance', capability: 'attendance.mark' },
   { href: '/pay-agreements', label: 'Pay Agreements', capability: 'payagreements.manage' },
   { href: '/payroll', label: 'Payroll', capability: 'payroll.view' },
+  { href: '/analytics', label: 'Analytics', capability: 'analytics.view' },
   { href: '/sites', label: 'Sites', capability: 'admin.full' },
   { href: '/vendors', label: 'Vendors', capability: 'admin.full' },
   { href: '/worker-types', label: 'Worker Types', capability: 'admin.full' },
