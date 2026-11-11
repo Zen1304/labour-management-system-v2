@@ -157,6 +157,42 @@ export const auditLog = pgTable('audit_log', {
   createdAt: timestamp('created_at', { withTimezone: true }).notNull().defaultNow(),
 });
 
+// ---------- Phase 3: attendance ----------
+// One row per worker, per date, per site: a worker who splits a day
+// between two sites gets two rows for that date.
+export const attendance = pgTable(
+  'attendance',
+  {
+    id: serial('id').primaryKey(),
+    workerId: integer('worker_id').notNull().references(() => workers.id),
+    siteId: integer('site_id').notNull().references(() => sites.id),
+    date: date('date').notNull(),
+    hoursWorked: doublePrecision('hours_worked').notNull().default(0),
+    leaveHours: doublePrecision('leave_hours').notNull().default(0),
+    overtimeHours: doublePrecision('overtime_hours').notNull().default(0),
+    markedBy: integer('marked_by').references(() => users.id),
+    markedAt: timestamp('marked_at', { withTimezone: true }).notNull().defaultNow(),
+  },
+  (t) => [unique().on(t.workerId, t.date, t.siteId)]
+);
+
+// A site can be marked "off" for a specific date (holiday / no-work day).
+// Enforced at attendance-WRITE time in this rebuild (a deliberate
+// improvement over the old app, which only excluded off-day attendance at
+// payroll time — see the rebuild plan) as well as at payroll time later.
+export const siteOffDays = pgTable(
+  'site_off_days',
+  {
+    id: serial('id').primaryKey(),
+    siteId: integer('site_id').notNull().references(() => sites.id),
+    date: date('date').notNull(),
+    reason: text('reason'),
+    createdBy: integer('created_by').references(() => users.id),
+    createdAt: timestamp('created_at', { withTimezone: true }).notNull().defaultNow(),
+  },
+  (t) => [unique().on(t.siteId, t.date)]
+);
+
 export type User = typeof users.$inferSelect;
 export type NewUser = typeof users.$inferInsert;
 export type Site = typeof sites.$inferSelect;
@@ -165,3 +201,5 @@ export type WorkerType = typeof workerTypes.$inferSelect;
 export type SkillCategory = typeof skillCategories.$inferSelect;
 export type Worker = typeof workers.$inferSelect;
 export type NewWorker = typeof workers.$inferInsert;
+export type Attendance = typeof attendance.$inferSelect;
+export type SiteOffDay = typeof siteOffDays.$inferSelect;
