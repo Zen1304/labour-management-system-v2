@@ -193,6 +193,60 @@ export const siteOffDays = pgTable(
   (t) => [unique().on(t.siteId, t.date)]
 );
 
+// ---------- Phase 4: pay agreements (Subcontract / Piece Work) ----------
+// Daily Wage has no row here — it's the implicit default whenever no
+// active agreement covers a worker+site+date (see the payroll generation
+// algorithm in the rebuild plan).
+export const payAgreementModeEnum = pgEnum('pay_agreement_mode', ['subcontract', 'piece_work']);
+export const payoutMethodEnum = pgEnum('payout_method', ['cash', 'bank_transfer']);
+export const payAgreementStatusEnum = pgEnum('pay_agreement_status', ['active', 'closed']);
+
+export const payAgreements = pgTable('pay_agreements', {
+  id: serial('id').primaryKey(),
+  siteId: integer('site_id').notNull().references(() => sites.id),
+  mode: payAgreementModeEnum('mode').notNull(),
+  scopeDescription: text('scope_description').notNull(),
+  vendorId: integer('vendor_id').references(() => vendors.id),
+  lumpSumAmount: doublePrecision('lump_sum_amount'), // subcontract only
+  unitLabel: text('unit_label'), // piece work only, e.g. "sq ft"
+  ratePerUnit: doublePrecision('rate_per_unit'), // piece work only
+  periodStart: date('period_start').notNull(),
+  periodEnd: date('period_end'), // nullable = open-ended
+  payoutMethod: payoutMethodEnum('payout_method').notNull().default('cash'),
+  status: payAgreementStatusEnum('status').notNull().default('active'),
+  terms: text('terms'), // free text for the printable work order
+  createdBy: integer('created_by').references(() => users.id),
+  createdAt: timestamp('created_at', { withTimezone: true }).notNull().defaultNow(),
+});
+
+export const payAgreementWorkers = pgTable(
+  'pay_agreement_workers',
+  {
+    id: serial('id').primaryKey(),
+    payAgreementId: integer('pay_agreement_id').notNull().references(() => payAgreements.id),
+    workerId: integer('worker_id').notNull().references(() => workers.id),
+    // NULL = split equally among all workers assigned to this agreement;
+    // when any row sets a value, all of them must (validated in app code)
+    // and they must sum to 100.
+    sharePercent: doublePrecision('share_percent'),
+  },
+  (t) => [unique().on(t.payAgreementId, t.workerId)]
+);
+
+export const pieceWorkEntries = pgTable(
+  'piece_work_entries',
+  {
+    id: serial('id').primaryKey(),
+    payAgreementId: integer('pay_agreement_id').notNull().references(() => payAgreements.id),
+    workerId: integer('worker_id').references(() => workers.id), // NULL = team-level entry
+    date: date('date').notNull(),
+    quantity: doublePrecision('quantity').notNull(),
+    loggedBy: integer('logged_by').references(() => users.id),
+    loggedAt: timestamp('logged_at', { withTimezone: true }).notNull().defaultNow(),
+  },
+  (t) => [unique().on(t.payAgreementId, t.workerId, t.date)]
+);
+
 export type User = typeof users.$inferSelect;
 export type NewUser = typeof users.$inferInsert;
 export type Site = typeof sites.$inferSelect;
@@ -203,3 +257,6 @@ export type Worker = typeof workers.$inferSelect;
 export type NewWorker = typeof workers.$inferInsert;
 export type Attendance = typeof attendance.$inferSelect;
 export type SiteOffDay = typeof siteOffDays.$inferSelect;
+export type PayAgreement = typeof payAgreements.$inferSelect;
+export type PayAgreementWorker = typeof payAgreementWorkers.$inferSelect;
+export type PieceWorkEntry = typeof pieceWorkEntries.$inferSelect;
