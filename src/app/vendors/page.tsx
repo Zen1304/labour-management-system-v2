@@ -31,23 +31,23 @@ export default async function VendorsPage({
       <form action={createVendorAction} className="mb-6 grid max-w-2xl grid-cols-2 gap-3">
         <input type="hidden" name="_csrf" value={csrf} />
         <div className="col-span-2">
-          <label className="mb-1 block text-xs font-medium uppercase text-neutral-500">Name</label>
+          <label className="mb-1 block text-xs font-medium uppercase text-brand-ink-soft">Name</label>
           <Input name="name" required />
         </div>
         <div>
-          <label className="mb-1 block text-xs font-medium uppercase text-neutral-500">Contact</label>
+          <label className="mb-1 block text-xs font-medium uppercase text-brand-ink-soft">Contact</label>
           <Input name="contact" />
         </div>
         <div>
-          <label className="mb-1 block text-xs font-medium uppercase text-neutral-500">WhatsApp</label>
+          <label className="mb-1 block text-xs font-medium uppercase text-brand-ink-soft">WhatsApp</label>
           <Input name="whatsapp" />
         </div>
         <div>
-          <label className="mb-1 block text-xs font-medium uppercase text-neutral-500">Email</label>
+          <label className="mb-1 block text-xs font-medium uppercase text-brand-ink-soft">Email</label>
           <Input name="email" type="email" />
         </div>
         <div>
-          <label className="mb-1 block text-xs font-medium uppercase text-neutral-500">Address</label>
+          <label className="mb-1 block text-xs font-medium uppercase text-brand-ink-soft">Address</label>
           <Input name="address" />
         </div>
         <div className="col-span-2">
@@ -57,7 +57,7 @@ export default async function VendorsPage({
 
       <table className="w-full border-collapse text-sm">
         <thead>
-          <tr className="border-b border-neutral-200 text-left text-neutral-500">
+          <tr className="border-b border-brand-line text-left text-brand-ink-soft">
             <th className="py-2">Code</th>
             <th className="py-2">Name</th>
             <th className="py-2">Contact</th>
@@ -71,11 +71,11 @@ export default async function VendorsPage({
             const deps = depsByVendor[v.id];
             const canHardDelete = deps.workers === 0 && deps.payrollItems === 0;
             return (
-              <tr key={v.id} className="border-b border-neutral-100">
+              <tr key={v.id} className="border-b border-brand-line/70">
                 <td className="py-2 font-mono text-xs">{v.vendorCode}</td>
                 <td className="py-2">
                   {v.name}
-                  {v.isDirect && <span className="ml-2 text-xs text-neutral-400">(Bilara Direct)</span>}
+                  {v.isDirect && <span className="ml-2 text-xs text-brand-ink-soft/70">(Bilara Direct)</span>}
                 </td>
                 <td className="py-2">{v.contact || '—'}</td>
                 <td className="py-2">{deps.workers}</td>
@@ -108,7 +108,7 @@ export default async function VendorsPage({
           })}
           {rows.length === 0 && (
             <tr>
-              <td colSpan={6} className="py-6 text-center text-neutral-400">
+              <td colSpan={6} className="py-6 text-center text-brand-ink-soft/70">
                 No vendors yet.
               </td>
             </tr>

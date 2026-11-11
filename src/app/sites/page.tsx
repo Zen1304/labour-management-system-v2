@@ -44,35 +44,35 @@ export default async function SitesPage({
       <form action={createSiteAction} className="mb-6 grid max-w-2xl grid-cols-2 gap-3">
         <input type="hidden" name="_csrf" value={csrf} />
         <div className="col-span-2">
-          <label className="mb-1 block text-xs font-medium uppercase text-neutral-500">Name</label>
+          <label className="mb-1 block text-xs font-medium uppercase text-brand-ink-soft">Name</label>
           <Input name="name" required />
         </div>
         <div>
-          <label className="mb-1 block text-xs font-medium uppercase text-neutral-500">Project number</label>
+          <label className="mb-1 block text-xs font-medium uppercase text-brand-ink-soft">Project number</label>
           <Input name="projectNumber" type="number" />
         </div>
         <div>
-          <label className="mb-1 block text-xs font-medium uppercase text-neutral-500">Client name</label>
+          <label className="mb-1 block text-xs font-medium uppercase text-brand-ink-soft">Client name</label>
           <Input name="clientName" />
         </div>
         <div>
-          <label className="mb-1 block text-xs font-medium uppercase text-neutral-500">Location</label>
+          <label className="mb-1 block text-xs font-medium uppercase text-brand-ink-soft">Location</label>
           <Input name="location" />
         </div>
         <div>
-          <label className="mb-1 block text-xs font-medium uppercase text-neutral-500">District</label>
+          <label className="mb-1 block text-xs font-medium uppercase text-brand-ink-soft">District</label>
           <Input name="district" />
         </div>
         <div>
-          <label className="mb-1 block text-xs font-medium uppercase text-neutral-500">State</label>
+          <label className="mb-1 block text-xs font-medium uppercase text-brand-ink-soft">State</label>
           <Input name="state" />
         </div>
         <div>
-          <label className="mb-1 block text-xs font-medium uppercase text-neutral-500">Maps link</label>
+          <label className="mb-1 block text-xs font-medium uppercase text-brand-ink-soft">Maps link</label>
           <Input name="mapsLink" />
         </div>
         <div className="col-span-2">
-          <label className="mb-1 block text-xs font-medium uppercase text-neutral-500">Address</label>
+          <label className="mb-1 block text-xs font-medium uppercase text-brand-ink-soft">Address</label>
           <Input name="address" />
         </div>
         <div className="col-span-2">
@@ -82,7 +82,7 @@ export default async function SitesPage({
 
       <table className="w-full border-collapse text-sm">
         <thead>
-          <tr className="border-b border-neutral-200 text-left text-neutral-500">
+          <tr className="border-b border-brand-line text-left text-brand-ink-soft">
             <th className="py-2">#</th>
             <th className="py-2">Name</th>
             <th className="py-2">Client</th>
@@ -93,7 +93,7 @@ export default async function SitesPage({
         </thead>
         <tbody>
           {rows.map((s) => (
-            <tr key={s.id} className="border-b border-neutral-100">
+            <tr key={s.id} className="border-b border-brand-line/70">
               <td className="py-2 font-mono text-xs">{s.projectNumber ?? (s.id === 100 ? '—' : s.id)}</td>
               <td className="py-2">{s.name}</td>
               <td className="py-2">{s.clientName || '—'}</td>

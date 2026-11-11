@@ -32,7 +32,7 @@ export default async function UsersPage({
 
       <table className="w-full border-collapse text-sm">
         <thead>
-          <tr className="border-b border-neutral-200 text-left text-neutral-500">
+          <tr className="border-b border-brand-line text-left text-brand-ink-soft">
             <th className="py-2">Username</th>
             <th className="py-2">Name</th>
             <th className="py-2">Role</th>
@@ -42,13 +42,13 @@ export default async function UsersPage({
         </thead>
         <tbody>
           {rows.map((u) => (
-            <tr key={u.id} className="border-b border-neutral-100">
+            <tr key={u.id} className="border-b border-brand-line/70">
               <td className="py-2">{u.username}</td>
               <td className="py-2">{u.name}</td>
               <td className="py-2">{ROLE_LABEL[u.role]}</td>
               <td className="py-2">{u.active ? 'Active' : 'Inactive'}</td>
               <td className="py-2 text-right space-x-2">
-                <Link href={`/users/${u.id}/edit`} className="text-sm text-blue-600 hover:underline">
+                <Link href={`/users/${u.id}/edit`} className="text-sm text-brand-accent hover:underline">
                   Edit
                 </Link>
                 {u.id !== user.id && (

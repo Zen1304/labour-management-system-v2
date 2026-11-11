@@ -39,7 +39,7 @@ export default async function EditWorkerPage({
     <AppShell user={user}>
       <div className="mb-6">
         <h1 className="text-2xl font-bold">Edit worker</h1>
-        <p className="text-sm text-neutral-500">
+        <p className="text-sm text-brand-ink-soft">
           Worker ID <b>{worker.workerCode || '—'}</b> &middot;{' '}
           {worker.verificationStatus === 'verified' ? 'ID Verified' : 'Verification pending'}
         </p>
@@ -57,7 +57,7 @@ export default async function EditWorkerPage({
       />
 
       {can(user, 'workers.verify') && (
-        <div className="mt-6 max-w-2xl rounded-lg border border-neutral-200 bg-neutral-50 p-4">
+        <div className="mt-6 max-w-2xl rounded-lg border border-brand-line bg-brand-sand p-4">
           <p className="mb-2 text-sm">
             <b>Identity verification</b> — the Aadhar number is this worker&apos;s proof of identity. Mark it once
             HR has checked it against the physical/scanned document.

@@ -27,7 +27,7 @@ export default async function WorkerTypesPage({
       <form action={createWorkerTypeAction} className="mb-6 flex items-end gap-2">
         <input type="hidden" name="_csrf" value={csrf} />
         <div>
-          <label className="mb-1 block text-xs font-medium uppercase text-neutral-500">New worker type</label>
+          <label className="mb-1 block text-xs font-medium uppercase text-brand-ink-soft">New worker type</label>
           <Input name="name" required placeholder="e.g. Mason" />
         </div>
         <Button type="submit">Add</Button>
@@ -35,7 +35,7 @@ export default async function WorkerTypesPage({
 
       <table className="w-full border-collapse text-sm">
         <thead>
-          <tr className="border-b border-neutral-200 text-left text-neutral-500">
+          <tr className="border-b border-brand-line text-left text-brand-ink-soft">
             <th className="py-2">Name</th>
             <th className="py-2">Status</th>
             <th className="py-2"></th>
@@ -43,7 +43,7 @@ export default async function WorkerTypesPage({
         </thead>
         <tbody>
           {rows.map((row) => (
-            <tr key={row.id} className="border-b border-neutral-100">
+            <tr key={row.id} className="border-b border-brand-line/70">
               <td className="py-2">{row.name}</td>
               <td className="py-2">{row.active ? 'Active' : 'Inactive'}</td>
               <td className="py-2 text-right">
@@ -60,7 +60,7 @@ export default async function WorkerTypesPage({
           ))}
           {rows.length === 0 && (
             <tr>
-              <td colSpan={3} className="py-6 text-center text-neutral-400">
+              <td colSpan={3} className="py-6 text-center text-brand-ink-soft/70">
                 No worker types yet.
               </td>
             </tr>

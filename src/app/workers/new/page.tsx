@@ -23,7 +23,7 @@ export default async function NewWorkerPage({
   return (
     <AppShell user={user}>
       <h1 className="mb-6 text-2xl font-bold">Add worker</h1>
-      <p className="mb-4 text-sm text-neutral-500">
+      <p className="mb-4 text-sm text-brand-ink-soft">
         A Worker ID will be assigned automatically once saved. New workers start in the Unassigned Pool.
       </p>
       {error && <div className="mb-4 rounded-md bg-red-50 px-4 py-2 text-sm text-red-700">{error}</div>}

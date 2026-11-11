@@ -37,7 +37,7 @@ export default async function WorkersPage() {
 
       <table className="w-full border-collapse text-sm">
         <thead>
-          <tr className="border-b border-neutral-200 text-left text-neutral-500">
+          <tr className="border-b border-brand-line text-left text-brand-ink-soft">
             <th className="py-2">Code</th>
             <th className="py-2">Name</th>
             <th className="py-2">Vendor</th>
@@ -50,7 +50,7 @@ export default async function WorkersPage() {
         </thead>
         <tbody>
           {rows.map((w) => (
-            <tr key={w.id} className="border-b border-neutral-100">
+            <tr key={w.id} className="border-b border-brand-line/70">
               <td className="py-2 font-mono text-xs">{w.workerCode}</td>
               <td className="py-2">{w.name}</td>
               <td className="py-2">{w.vendorName || '—'}</td>
@@ -59,7 +59,7 @@ export default async function WorkersPage() {
               <td className="py-2">{w.status}</td>
               <td className="py-2">{w.verificationStatus === 'verified' ? 'Verified' : 'Pending'}</td>
               <td className="py-2 text-right">
-                <Link href={`/workers/${w.id}/edit`} className="text-sm text-blue-600 hover:underline">
+                <Link href={`/workers/${w.id}/edit`} className="text-sm text-brand-accent hover:underline">
                   Edit
                 </Link>
               </td>
@@ -67,7 +67,7 @@ export default async function WorkersPage() {
           ))}
           {rows.length === 0 && (
             <tr>
-              <td colSpan={8} className="py-6 text-center text-neutral-400">
+              <td colSpan={8} className="py-6 text-center text-brand-ink-soft/70">
                 No workers yet.
               </td>
             </tr>

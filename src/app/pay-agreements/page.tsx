@@ -35,7 +35,7 @@ export default async function PayAgreementsPage() {
 
       <table className="w-full border-collapse text-sm">
         <thead>
-          <tr className="border-b border-neutral-200 text-left text-neutral-500">
+          <tr className="border-b border-brand-line text-left text-brand-ink-soft">
             <th className="py-2">Site</th>
             <th className="py-2">Mode</th>
             <th className="py-2">Scope</th>
@@ -45,11 +45,11 @@ export default async function PayAgreementsPage() {
         </thead>
         <tbody>
           {rows.map((a) => (
-            <tr key={a.id} className="border-b border-neutral-100">
+            <tr key={a.id} className="border-b border-brand-line/70">
               <td className="py-2">{a.siteName}</td>
               <td className="py-2">{a.mode === 'subcontract' ? 'Subcontract' : 'Piece Work'}</td>
               <td className="py-2">
-                <Link href={`/pay-agreements/${a.id}`} className="text-blue-600 hover:underline">
+                <Link href={`/pay-agreements/${a.id}`} className="text-brand-accent hover:underline">
                   {a.scopeDescription}
                 </Link>
               </td>
@@ -61,7 +61,7 @@ export default async function PayAgreementsPage() {
           ))}
           {rows.length === 0 && (
             <tr>
-              <td colSpan={5} className="py-6 text-center text-neutral-400">
+              <td colSpan={5} className="py-6 text-center text-brand-ink-soft/70">
                 No pay agreements yet.
               </td>
             </tr>

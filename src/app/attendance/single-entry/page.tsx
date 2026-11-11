@@ -46,8 +46,8 @@ export default async function SingleEntryPage({
       <form action={saveSingleEntryAction} className="grid max-w-xl grid-cols-2 gap-3">
         <input type="hidden" name="_csrf" value={csrf} />
         <div className="col-span-2">
-          <label className="mb-1 block text-xs font-medium uppercase text-neutral-500">Worker</label>
-          <select name="workerId" required className="h-10 w-full rounded-md border border-neutral-300 bg-white px-3 text-sm">
+          <label className="mb-1 block text-xs font-medium uppercase text-brand-ink-soft">Worker</label>
+          <select name="workerId" required className="h-10 w-full rounded-md border border-brand-line bg-white px-3 text-sm">
             <option value="">Select worker…</option>
             {allWorkers.map((w) => (
               <option key={w.id} value={w.id}>
@@ -57,8 +57,8 @@ export default async function SingleEntryPage({
           </select>
         </div>
         <div className="col-span-2">
-          <label className="mb-1 block text-xs font-medium uppercase text-neutral-500">Site worked at</label>
-          <select name="siteId" required className="h-10 w-full rounded-md border border-neutral-300 bg-white px-3 text-sm">
+          <label className="mb-1 block text-xs font-medium uppercase text-brand-ink-soft">Site worked at</label>
+          <select name="siteId" required className="h-10 w-full rounded-md border border-brand-line bg-white px-3 text-sm">
             <option value="">Select site…</option>
             {eligibleSites.map((s) => (
               <option key={s.id} value={s.id}>
@@ -68,19 +68,19 @@ export default async function SingleEntryPage({
           </select>
         </div>
         <div>
-          <label className="mb-1 block text-xs font-medium uppercase text-neutral-500">Date</label>
+          <label className="mb-1 block text-xs font-medium uppercase text-brand-ink-soft">Date</label>
           <Input name="date" type="date" required defaultValue={date} />
         </div>
         <div>
-          <label className="mb-1 block text-xs font-medium uppercase text-neutral-500">Hours worked</label>
+          <label className="mb-1 block text-xs font-medium uppercase text-brand-ink-soft">Hours worked</label>
           <Input name="hours" type="number" step="0.5" min="0" max="10" defaultValue="0" />
         </div>
         <div>
-          <label className="mb-1 block text-xs font-medium uppercase text-neutral-500">Leave hours</label>
+          <label className="mb-1 block text-xs font-medium uppercase text-brand-ink-soft">Leave hours</label>
           <Input name="leave" type="number" step="0.5" min="0" defaultValue="0" />
         </div>
         <div>
-          <label className="mb-1 block text-xs font-medium uppercase text-neutral-500">Overtime</label>
+          <label className="mb-1 block text-xs font-medium uppercase text-brand-ink-soft">Overtime</label>
           <Input name="ot" type="number" step="0.5" min="0" max="10" defaultValue="0" />
         </div>
         <div className="col-span-2">

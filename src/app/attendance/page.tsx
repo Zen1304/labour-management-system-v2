@@ -48,7 +48,7 @@ export default async function AttendancePage({
     <AppShell user={user}>
       <div className="mb-6 flex items-center justify-between">
         <h1 className="text-2xl font-bold">Attendance</h1>
-        <Link href="/attendance/site-off" className="text-sm text-blue-600 hover:underline">
+        <Link href="/attendance/site-off" className="text-sm text-brand-accent hover:underline">
           Manage site off days
         </Link>
       </div>
@@ -58,15 +58,15 @@ export default async function AttendancePage({
 
       <form method="get" className="mb-6 flex items-end gap-3">
         <div>
-          <label className="mb-1 block text-xs font-medium uppercase text-neutral-500">Date</label>
+          <label className="mb-1 block text-xs font-medium uppercase text-brand-ink-soft">Date</label>
           <Input name="date" type="date" defaultValue={date} />
         </div>
         <div>
-          <label className="mb-1 block text-xs font-medium uppercase text-neutral-500">Site</label>
+          <label className="mb-1 block text-xs font-medium uppercase text-brand-ink-soft">Site</label>
           <select
             name="siteId"
             defaultValue={siteId}
-            className="h-10 rounded-md border border-neutral-300 bg-white px-3 text-sm"
+            className="h-10 rounded-md border border-brand-line bg-white px-3 text-sm"
           >
             {eligibleSites.map((s) => (
               <option key={s.id} value={s.id}>
@@ -81,7 +81,7 @@ export default async function AttendancePage({
       </form>
 
       {eligibleSites.length === 0 && (
-        <p className="text-neutral-500">No active sites are eligible for attendance right now.</p>
+        <p className="text-brand-ink-soft">No active sites are eligible for attendance right now.</p>
       )}
 
       {siteId && !offError && (
@@ -91,7 +91,7 @@ export default async function AttendancePage({
           <input type="hidden" name="siteId" value={siteId} />
           <table className="w-full border-collapse text-sm">
             <thead>
-              <tr className="border-b border-neutral-200 text-left text-neutral-500">
+              <tr className="border-b border-brand-line text-left text-brand-ink-soft">
                 <th className="py-2">Worker</th>
                 <th className="py-2">Hours worked</th>
                 <th className="py-2">Leave hours</th>
@@ -102,7 +102,7 @@ export default async function AttendancePage({
               {crew.map((w) => {
                 const existing = existingByWorker[w.id];
                 return (
-                  <tr key={w.id} className="border-b border-neutral-100">
+                  <tr key={w.id} className="border-b border-brand-line/70">
                     <td className="py-2">{w.name}</td>
                     <td className="py-2">
                       <Input name={`hours_${w.id}`} type="number" step="0.5" min="0" max="10" className="w-20" defaultValue={existing?.hoursWorked ?? 0} />
@@ -118,7 +118,7 @@ export default async function AttendancePage({
               })}
               {crew.length === 0 && (
                 <tr>
-                  <td colSpan={4} className="py-6 text-center text-neutral-400">
+                  <td colSpan={4} className="py-6 text-center text-brand-ink-soft/70">
                     No active workers assigned to this site.
                   </td>
                 </tr>

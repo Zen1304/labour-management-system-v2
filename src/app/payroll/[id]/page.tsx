@@ -82,7 +82,7 @@ export default async function PayrollRunDetailPage({
       <h1 className="mb-1 text-2xl font-bold">
         Payroll run: {run.periodStart} → {run.periodEnd}
       </h1>
-      <p className="mb-4 text-sm text-neutral-500">
+      <p className="mb-4 text-sm text-brand-ink-soft">
         Generated {run.generatedAt.toISOString().slice(0, 10)}
         {run.notes ? ` · ${run.notes}` : ''}
       </p>
@@ -95,7 +95,7 @@ export default async function PayrollRunDetailPage({
         </div>
       )}
 
-      <div className="mb-6 rounded-lg border border-neutral-200 bg-white p-4 text-sm">
+      <div className="mb-6 rounded-lg border border-brand-line bg-white p-4 text-sm">
         <p>
           Status: <span className="font-semibold">{run.status.replace('_', ' ')}</span>
           {verifiedByName ? ` · Verified by ${verifiedByName}` : ''}
@@ -107,7 +107,7 @@ export default async function PayrollRunDetailPage({
       <h2 className="mb-2 text-lg font-semibold">Per-site verification</h2>
       <table className="mb-6 w-full border-collapse text-sm">
         <thead>
-          <tr className="border-b border-neutral-200 text-left text-neutral-500">
+          <tr className="border-b border-brand-line text-left text-brand-ink-soft">
             <th className="py-2">Site</th>
             <th className="py-2">Workers</th>
             <th className="py-2">Net pay</th>
@@ -117,7 +117,7 @@ export default async function PayrollRunDetailPage({
         </thead>
         <tbody>
           {siteRows.map((s) => (
-            <tr key={s.siteId} className="border-b border-neutral-100">
+            <tr key={s.siteId} className="border-b border-brand-line/70">
               <td className="py-2">{siteNames[s.siteId] || `Site ${s.siteId}`}</td>
               <td className="py-2">{s.workerCount}</td>
               <td className="py-2">₹{Number(s.netPay).toFixed(2)}</td>
@@ -136,7 +136,7 @@ export default async function PayrollRunDetailPage({
           ))}
           {siteRows.length === 0 && (
             <tr>
-              <td colSpan={5} className="py-4 text-center text-neutral-400">
+              <td colSpan={5} className="py-4 text-center text-brand-ink-soft/70">
                 No site slices in this run.
               </td>
             </tr>
@@ -153,13 +153,13 @@ export default async function PayrollRunDetailPage({
       )}
       {run.status === 'completed' && <p className="mb-6 text-sm text-green-700">This run has been completed.</p>}
       {!allVerified && run.status === 'pending_verification' && (
-        <p className="mb-6 text-xs text-neutral-400">The run auto-verifies once every site above has been verified.</p>
+        <p className="mb-6 text-xs text-brand-ink-soft/70">The run auto-verifies once every site above has been verified.</p>
       )}
 
       <h2 className="mb-2 text-lg font-semibold">Per-worker breakdown</h2>
       <table className="w-full border-collapse text-sm">
         <thead>
-          <tr className="border-b border-neutral-200 text-left text-neutral-500">
+          <tr className="border-b border-brand-line text-left text-brand-ink-soft">
             <th className="py-2">Worker</th>
             <th className="py-2">Mode</th>
             <th className="py-2">Days present</th>
@@ -170,7 +170,7 @@ export default async function PayrollRunDetailPage({
         </thead>
         <tbody>
           {items.map((i) => (
-            <tr key={i.id} className="border-b border-neutral-100">
+            <tr key={i.id} className="border-b border-brand-line/70">
               <td className="py-2">
                 {i.workerCode} — {i.workerName}
               </td>
@@ -183,7 +183,7 @@ export default async function PayrollRunDetailPage({
           ))}
           {items.length === 0 && (
             <tr>
-              <td colSpan={6} className="py-4 text-center text-neutral-400">
+              <td colSpan={6} className="py-4 text-center text-brand-ink-soft/70">
                 No workers in this run.
               </td>
             </tr>

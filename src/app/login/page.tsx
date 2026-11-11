@@ -17,31 +17,51 @@ export default async function LoginPage({
   const csrf = await getAnonCsrfToken();
 
   return (
-    <div className="flex min-h-screen items-center justify-center bg-neutral-950 px-4">
-      <div className="w-full max-w-sm rounded-xl bg-neutral-900 p-8 shadow-xl">
-        <div className="mb-6 text-center">
-          <h1 className="text-xl font-bold text-white">Labour Management System</h1>
-          <p className="mt-1 text-sm text-neutral-400">Sign in to continue</p>
+    <div className="flex min-h-screen items-center justify-center bg-brand-sand px-4">
+      <div className="w-full max-w-sm">
+        <div className="mb-8 flex flex-col items-center text-center">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src="/brand/bilara-logo.png" alt="Bilara Group" className="h-20 w-auto" />
+          <div className="mt-5 brand-rule w-16" />
         </div>
 
-        {error && (
-          <div className="mb-4 rounded-md bg-red-950 px-4 py-2 text-sm text-red-300">{error}</div>
-        )}
+        <div className="rounded-xl border border-brand-line bg-white p-8 shadow-sm">
+          <div className="mb-6 text-center">
+            <h1 className="font-display text-2xl font-semibold tracking-wide text-brand-ink">
+              Labour Management
+            </h1>
+            <p className="mt-1 text-sm text-brand-ink-soft">Sign in to continue</p>
+          </div>
 
-        <form action={loginAction} className="space-y-4">
-          <input type="hidden" name="_csrf" value={csrf} />
-          <div>
-            <label className="mb-1 block text-xs font-medium uppercase text-neutral-400">Username</label>
-            <Input name="username" type="text" required autoFocus className="bg-neutral-800 text-white border-neutral-700" />
-          </div>
-          <div>
-            <label className="mb-1 block text-xs font-medium uppercase text-neutral-400">Password</label>
-            <Input name="password" type="password" required className="bg-neutral-800 text-white border-neutral-700" />
-          </div>
-          <Button type="submit" className="w-full">
-            Sign in
-          </Button>
-        </form>
+          {error && (
+            <div className="mb-4 rounded-md border border-red-200 bg-red-50 px-4 py-2 text-sm text-red-700">
+              {error}
+            </div>
+          )}
+
+          <form action={loginAction} className="space-y-4">
+            <input type="hidden" name="_csrf" value={csrf} />
+            <div>
+              <label className="mb-1 block text-xs font-medium uppercase tracking-wide text-brand-ink-soft">
+                Username
+              </label>
+              <Input name="username" type="text" required autoFocus />
+            </div>
+            <div>
+              <label className="mb-1 block text-xs font-medium uppercase tracking-wide text-brand-ink-soft">
+                Password
+              </label>
+              <Input name="password" type="password" required />
+            </div>
+            <Button type="submit" variant="accent" className="w-full">
+              Sign in
+            </Button>
+          </form>
+        </div>
+
+        <p className="mt-6 text-center text-xs tracking-widest text-brand-ink-soft/70 uppercase">
+          Bilara Group &middot; Carved Perfection
+        </p>
       </div>
     </div>
   );

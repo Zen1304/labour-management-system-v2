@@ -46,8 +46,8 @@ export default async function SiteOffPage({
       <form action={addSiteOffDayAction} className="mb-6 flex items-end gap-3">
         <input type="hidden" name="_csrf" value={csrf} />
         <div>
-          <label className="mb-1 block text-xs font-medium uppercase text-neutral-500">Site</label>
-          <select name="siteId" required className="h-10 rounded-md border border-neutral-300 bg-white px-3 text-sm">
+          <label className="mb-1 block text-xs font-medium uppercase text-brand-ink-soft">Site</label>
+          <select name="siteId" required className="h-10 rounded-md border border-brand-line bg-white px-3 text-sm">
             {siteRows.map((s) => (
               <option key={s.id} value={s.id}>
                 {s.name}
@@ -56,11 +56,11 @@ export default async function SiteOffPage({
           </select>
         </div>
         <div>
-          <label className="mb-1 block text-xs font-medium uppercase text-neutral-500">Date</label>
+          <label className="mb-1 block text-xs font-medium uppercase text-brand-ink-soft">Date</label>
           <Input name="date" type="date" required />
         </div>
         <div>
-          <label className="mb-1 block text-xs font-medium uppercase text-neutral-500">Reason</label>
+          <label className="mb-1 block text-xs font-medium uppercase text-brand-ink-soft">Reason</label>
           <Input name="reason" placeholder="e.g. Public holiday" />
         </div>
         <Button type="submit">Mark off</Button>
@@ -68,7 +68,7 @@ export default async function SiteOffPage({
 
       <table className="w-full border-collapse text-sm">
         <thead>
-          <tr className="border-b border-neutral-200 text-left text-neutral-500">
+          <tr className="border-b border-brand-line text-left text-brand-ink-soft">
             <th className="py-2">Date</th>
             <th className="py-2">Site</th>
             <th className="py-2">Reason</th>
@@ -77,7 +77,7 @@ export default async function SiteOffPage({
         </thead>
         <tbody>
           {offRows.map((o) => (
-            <tr key={o.id} className="border-b border-neutral-100">
+            <tr key={o.id} className="border-b border-brand-line/70">
               <td className="py-2">{o.date}</td>
               <td className="py-2">{o.siteName}</td>
               <td className="py-2">{o.reason || '—'}</td>
@@ -94,7 +94,7 @@ export default async function SiteOffPage({
           ))}
           {offRows.length === 0 && (
             <tr>
-              <td colSpan={4} className="py-6 text-center text-neutral-400">
+              <td colSpan={4} className="py-6 text-center text-brand-ink-soft/70">
                 No off days recorded.
               </td>
             </tr>

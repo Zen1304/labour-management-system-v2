@@ -30,24 +30,24 @@ export function UserForm({
 
       <div className="grid grid-cols-2 gap-3">
         <div>
-          <label className="mb-1 block text-xs font-medium uppercase text-neutral-500">Username (email)</label>
+          <label className="mb-1 block text-xs font-medium uppercase text-brand-ink-soft">Username (email)</label>
           <Input name="username" type="email" required defaultValue={user?.username} />
         </div>
         <div>
-          <label className="mb-1 block text-xs font-medium uppercase text-neutral-500">Name</label>
+          <label className="mb-1 block text-xs font-medium uppercase text-brand-ink-soft">Name</label>
           <Input name="name" required defaultValue={user?.name} />
         </div>
         <div>
-          <label className="mb-1 block text-xs font-medium uppercase text-neutral-500">Contact phone</label>
+          <label className="mb-1 block text-xs font-medium uppercase text-brand-ink-soft">Contact phone</label>
           <Input name="contact" required defaultValue={user?.contact ?? ''} />
         </div>
         <div>
-          <label className="mb-1 block text-xs font-medium uppercase text-neutral-500">Role</label>
+          <label className="mb-1 block text-xs font-medium uppercase text-brand-ink-soft">Role</label>
           <select
             name="role"
             required
             defaultValue={user?.role}
-            className="h-10 w-full rounded-md border border-neutral-300 bg-white px-3 text-sm"
+            className="h-10 w-full rounded-md border border-brand-line bg-white px-3 text-sm"
           >
             {!user && <option value="">Select a role</option>}
             {selectableRoles.map((r) => (
@@ -60,7 +60,7 @@ export function UserForm({
       </div>
 
       <div>
-        <label className="mb-1 block text-xs font-medium uppercase text-neutral-500">
+        <label className="mb-1 block text-xs font-medium uppercase text-brand-ink-soft">
           {user ? 'New password (leave blank to keep current)' : 'Password'}
         </label>
         <Input name={user ? 'newPassword' : 'password'} type="password" minLength={8} required={!user} />
@@ -72,10 +72,10 @@ export function UserForm({
       </label>
 
       <div>
-        <p className="mb-1 text-xs font-medium uppercase text-neutral-500">
+        <p className="mb-1 text-xs font-medium uppercase text-brand-ink-soft">
           Site assignments (Project Manager / Site Engineer only)
         </p>
-        <div className="max-h-40 overflow-y-auto rounded-md border border-neutral-200 p-2">
+        <div className="max-h-40 overflow-y-auto rounded-md border border-brand-line p-2">
           {siteOptions.map((s) => (
             <label key={s.id} className="flex items-center gap-2 py-0.5 text-sm">
               <input type="checkbox" name="siteIds" value={s.id} defaultChecked={assigned.has(s.id)} />

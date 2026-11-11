@@ -37,8 +37,8 @@ export default async function NewPayAgreementPage({
 
         <div className="grid grid-cols-2 gap-3">
           <div>
-            <label className="mb-1 block text-xs font-medium uppercase text-neutral-500">Site</label>
-            <select name="siteId" required className="h-10 w-full rounded-md border border-neutral-300 bg-white px-3 text-sm">
+            <label className="mb-1 block text-xs font-medium uppercase text-brand-ink-soft">Site</label>
+            <select name="siteId" required className="h-10 w-full rounded-md border border-brand-line bg-white px-3 text-sm">
               {siteRows.map((s) => (
                 <option key={s.id} value={s.id}>
                   {s.name}
@@ -47,8 +47,8 @@ export default async function NewPayAgreementPage({
             </select>
           </div>
           <div>
-            <label className="mb-1 block text-xs font-medium uppercase text-neutral-500">Vendor (optional)</label>
-            <select name="vendorId" className="h-10 w-full rounded-md border border-neutral-300 bg-white px-3 text-sm">
+            <label className="mb-1 block text-xs font-medium uppercase text-brand-ink-soft">Vendor (optional)</label>
+            <select name="vendorId" className="h-10 w-full rounded-md border border-brand-line bg-white px-3 text-sm">
               <option value="">(none)</option>
               {vendorRows.map((v) => (
                 <option key={v.id} value={v.id}>
@@ -60,7 +60,7 @@ export default async function NewPayAgreementPage({
         </div>
 
         <div>
-          <label className="mb-1 block text-xs font-medium uppercase text-neutral-500">Mode</label>
+          <label className="mb-1 block text-xs font-medium uppercase text-brand-ink-soft">Mode</label>
           <div className="flex gap-4 text-sm">
             <label className="flex items-center gap-2">
               <input type="radio" name="mode" value="subcontract" defaultChecked /> Subcontract (lump sum)
@@ -72,41 +72,41 @@ export default async function NewPayAgreementPage({
         </div>
 
         <div>
-          <label className="mb-1 block text-xs font-medium uppercase text-neutral-500">Scope description</label>
+          <label className="mb-1 block text-xs font-medium uppercase text-brand-ink-soft">Scope description</label>
           <Input name="scopeDescription" required placeholder="e.g. Plastering, Block B, Phase 2" />
         </div>
 
-        <div className="grid grid-cols-3 gap-3 rounded-md border border-neutral-200 p-3">
-          <p className="col-span-3 text-xs text-neutral-500">
+        <div className="grid grid-cols-3 gap-3 rounded-md border border-brand-line p-3">
+          <p className="col-span-3 text-xs text-brand-ink-soft">
             Fill in the fields for whichever mode you selected above — Subcontract uses lump sum; Piece Work uses unit
             label + rate per unit.
           </p>
           <div>
-            <label className="mb-1 block text-xs font-medium uppercase text-neutral-500">Lump sum amount (₹)</label>
+            <label className="mb-1 block text-xs font-medium uppercase text-brand-ink-soft">Lump sum amount (₹)</label>
             <Input name="lumpSumAmount" type="number" step="0.01" min="0.01" />
           </div>
           <div>
-            <label className="mb-1 block text-xs font-medium uppercase text-neutral-500">Unit label</label>
+            <label className="mb-1 block text-xs font-medium uppercase text-brand-ink-soft">Unit label</label>
             <Input name="unitLabel" placeholder="e.g. sq ft" />
           </div>
           <div>
-            <label className="mb-1 block text-xs font-medium uppercase text-neutral-500">Rate per unit (₹)</label>
+            <label className="mb-1 block text-xs font-medium uppercase text-brand-ink-soft">Rate per unit (₹)</label>
             <Input name="ratePerUnit" type="number" step="0.01" min="0.01" />
           </div>
         </div>
 
         <div className="grid grid-cols-3 gap-3">
           <div>
-            <label className="mb-1 block text-xs font-medium uppercase text-neutral-500">Period start</label>
+            <label className="mb-1 block text-xs font-medium uppercase text-brand-ink-soft">Period start</label>
             <Input name="periodStart" type="date" required />
           </div>
           <div>
-            <label className="mb-1 block text-xs font-medium uppercase text-neutral-500">Period end (optional)</label>
+            <label className="mb-1 block text-xs font-medium uppercase text-brand-ink-soft">Period end (optional)</label>
             <Input name="periodEnd" type="date" />
           </div>
           <div>
-            <label className="mb-1 block text-xs font-medium uppercase text-neutral-500">Payout method</label>
-            <select name="payoutMethod" className="h-10 w-full rounded-md border border-neutral-300 bg-white px-3 text-sm">
+            <label className="mb-1 block text-xs font-medium uppercase text-brand-ink-soft">Payout method</label>
+            <select name="payoutMethod" className="h-10 w-full rounded-md border border-brand-line bg-white px-3 text-sm">
               <option value="cash">Cash</option>
               <option value="bank_transfer">Bank Transfer / Cheque</option>
             </select>
@@ -114,16 +114,16 @@ export default async function NewPayAgreementPage({
         </div>
 
         <div>
-          <label className="mb-1 block text-xs font-medium uppercase text-neutral-500">Terms (for the printable work order)</label>
+          <label className="mb-1 block text-xs font-medium uppercase text-brand-ink-soft">Terms (for the printable work order)</label>
           <Input name="terms" />
         </div>
 
         <div>
-          <p className="mb-1 text-xs font-medium uppercase text-neutral-500">
+          <p className="mb-1 text-xs font-medium uppercase text-brand-ink-soft">
             Assign workers — leave every share blank for an equal split, or set every assigned worker&apos;s % so they
             add up to 100.
           </p>
-          <div className="max-h-64 space-y-1 overflow-y-auto rounded-md border border-neutral-200 p-2">
+          <div className="max-h-64 space-y-1 overflow-y-auto rounded-md border border-brand-line p-2">
             {workerRows.map((w) => (
               <div key={w.id} className="flex items-center gap-2 py-0.5 text-sm">
                 <input type="checkbox" name="workerIds" value={w.id} />

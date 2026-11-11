@@ -31,13 +31,13 @@ export default async function AnalyticsPage() {
       <h1 className="mb-6 text-2xl font-bold">Analytics</h1>
 
       <h2 className="mb-2 text-lg font-semibold">Attendance % by site — last {TREND_DAYS} days</h2>
-      <div className="mb-8 overflow-x-auto rounded-lg border border-neutral-200 bg-white p-4">
+      <div className="mb-8 overflow-x-auto rounded-lg border border-brand-line bg-white p-4">
         {attendance.rows.length === 0 ? (
-          <p className="text-sm text-neutral-400">No sites with active workers yet.</p>
+          <p className="text-sm text-brand-ink-soft/70">No sites with active workers yet.</p>
         ) : (
           <table className="w-full border-collapse text-xs">
             <thead>
-              <tr className="border-b border-neutral-200 text-left text-neutral-500">
+              <tr className="border-b border-brand-line text-left text-brand-ink-soft">
                 <th className="py-1 pr-3">Site</th>
                 {attendance.dates.map((d) => (
                   <th key={d} className="px-1 py-1 text-right">
@@ -49,10 +49,10 @@ export default async function AnalyticsPage() {
             </thead>
             <tbody>
               {attendance.rows.map((r) => (
-                <tr key={r.siteId} className="border-b border-neutral-100">
+                <tr key={r.siteId} className="border-b border-brand-line/70">
                   <td className="py-1 pr-3">{r.siteName}</td>
                   {r.dailyPct.map((v, i) => (
-                    <td key={i} className="px-1 py-1 text-right text-neutral-600">
+                    <td key={i} className="px-1 py-1 text-right text-brand-ink-soft">
                       {v === null ? '—' : `${v}%`}
                     </td>
                   ))}
@@ -67,20 +67,20 @@ export default async function AnalyticsPage() {
       <div className="mb-8 grid grid-cols-1 gap-6 lg:grid-cols-2">
         <div>
           <h2 className="mb-2 text-lg font-semibold">Payroll cost trend</h2>
-          <div className="rounded-lg border border-neutral-200 bg-white p-4">
+          <div className="rounded-lg border border-brand-line bg-white p-4">
             {payrollTrend.length === 0 ? (
-              <p className="text-sm text-neutral-400">No payroll runs generated yet.</p>
+              <p className="text-sm text-brand-ink-soft/70">No payroll runs generated yet.</p>
             ) : (
               <table className="w-full border-collapse text-sm">
                 <thead>
-                  <tr className="border-b border-neutral-200 text-left text-neutral-500">
+                  <tr className="border-b border-brand-line text-left text-brand-ink-soft">
                     <th className="py-1">Period</th>
                     <th className="py-1 text-right">Net</th>
                   </tr>
                 </thead>
                 <tbody>
                   {payrollTrend.map((r, i) => (
-                    <tr key={i} className="border-b border-neutral-100">
+                    <tr key={i} className="border-b border-brand-line/70">
                       <td className="py-1">{r.periodStart}</td>
                       <td className="py-1 text-right">{fmtMoney(r.net)}</td>
                     </tr>
@@ -88,29 +88,29 @@ export default async function AnalyticsPage() {
                 </tbody>
               </table>
             )}
-            <p className="mt-2 text-xs text-neutral-400">Net payout per generated run, most recent 10 (excludes flagged runs).</p>
+            <p className="mt-2 text-xs text-brand-ink-soft/70">Net payout per generated run, most recent 10 (excludes flagged runs).</p>
           </div>
         </div>
 
         <div>
           <h2 className="mb-2 text-lg font-semibold">Site performance impact</h2>
-          <div className="rounded-lg border border-neutral-200 bg-white p-4">
+          <div className="rounded-lg border border-brand-line bg-white p-4">
             <div className="mb-3 grid grid-cols-2 gap-3">
-              <div className="rounded-md bg-neutral-50 p-3">
-                <div className="text-xs uppercase text-neutral-500">Cuts logged ({siteImpact.totalCuts})</div>
+              <div className="rounded-md bg-brand-sand p-3">
+                <div className="text-xs uppercase text-brand-ink-soft">Cuts logged ({siteImpact.totalCuts})</div>
                 <div className="text-lg font-bold">{fmtMoney(siteImpact.totalDeducted)}</div>
               </div>
-              <div className="rounded-md bg-neutral-50 p-3">
-                <div className="text-xs uppercase text-neutral-500">Bonuses/payments ({siteImpact.totalBonusesAndPayments})</div>
+              <div className="rounded-md bg-brand-sand p-3">
+                <div className="text-xs uppercase text-brand-ink-soft">Bonuses/payments ({siteImpact.totalBonusesAndPayments})</div>
                 <div className="text-lg font-bold">{fmtMoney(siteImpact.totalAdded)}</div>
               </div>
             </div>
             {siteImpact.rows.length === 0 ? (
-              <p className="text-sm text-neutral-400">No site-performance adjustments logged yet.</p>
+              <p className="text-sm text-brand-ink-soft/70">No site-performance adjustments logged yet.</p>
             ) : (
               <table className="w-full border-collapse text-xs">
                 <thead>
-                  <tr className="border-b border-neutral-200 text-left text-neutral-500">
+                  <tr className="border-b border-brand-line text-left text-brand-ink-soft">
                     <th className="py-1">Site</th>
                     <th className="py-1">Type</th>
                     <th className="py-1 text-right">Applied</th>
@@ -118,7 +118,7 @@ export default async function AnalyticsPage() {
                 </thead>
                 <tbody>
                   {siteImpact.rows.map((r) => (
-                    <tr key={r.id} className="border-b border-neutral-100">
+                    <tr key={r.id} className="border-b border-brand-line/70">
                       <td className="py-1">{r.siteName}</td>
                       <td className="py-1">{r.adjustmentType}</td>
                       <td className="py-1 text-right">{fmtMoney(r.amountApplied)}</td>
@@ -132,10 +132,10 @@ export default async function AnalyticsPage() {
       </div>
 
       <h2 className="mb-2 text-lg font-semibold">Vendor comparison</h2>
-      <div className="overflow-x-auto rounded-lg border border-neutral-200 bg-white p-4">
+      <div className="overflow-x-auto rounded-lg border border-brand-line bg-white p-4">
         <table className="w-full border-collapse text-sm">
           <thead>
-            <tr className="border-b border-neutral-200 text-left text-neutral-500">
+            <tr className="border-b border-brand-line text-left text-brand-ink-soft">
               <th className="py-2">Vendor</th>
               <th className="py-2">Workers</th>
               <th className="py-2">Avg attendance</th>
@@ -147,7 +147,7 @@ export default async function AnalyticsPage() {
           </thead>
           <tbody>
             {vendors.rows.map((v) => (
-              <tr key={v.id} className="border-b border-neutral-100">
+              <tr key={v.id} className="border-b border-brand-line/70">
                 <td className="py-2">
                   {v.name}
                   {v.isDirect ? ' (Direct)' : ''}
@@ -159,7 +159,7 @@ export default async function AnalyticsPage() {
                 <td className="py-2 text-right">{fmtMoney(v.totalPaid)}</td>
                 <td className="py-2 text-right">{fmtMoney(v.cashPaid)}</td>
                 <td className="py-2 text-right">{fmtMoney(v.bankPaid)}</td>
-                <td className="py-2 text-xs text-neutral-500">
+                <td className="py-2 text-xs text-brand-ink-soft">
                   {v.payModeBreakdown.length === 0
                     ? '—'
                     : v.payModeBreakdown.map((b) => `${PAY_MODE_LABEL[b.payMode] || b.payMode}: ${fmtMoney(b.total)}`).join(' · ')}
@@ -168,7 +168,7 @@ export default async function AnalyticsPage() {
             ))}
             {vendors.rows.length === 0 && (
               <tr>
-                <td colSpan={7} className="py-4 text-center text-neutral-400">
+                <td colSpan={7} className="py-4 text-center text-brand-ink-soft/70">
                   No vendors yet.
                 </td>
               </tr>

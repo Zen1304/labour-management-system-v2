@@ -69,7 +69,7 @@ export default async function PayAgreementDetailPage({
       <div className="mb-2 flex items-center justify-between">
         <h1 className="text-2xl font-bold">{agreement.scopeDescription}</h1>
         <div className="flex gap-2">
-          <Link href={`/pay-agreements/${agreementId}/work-order`} className="text-sm text-blue-600 hover:underline self-center">
+          <Link href={`/pay-agreements/${agreementId}/work-order`} className="text-sm text-brand-accent hover:underline self-center">
             Printable work order
           </Link>
           {agreement.status === 'active' && (
@@ -83,13 +83,13 @@ export default async function PayAgreementDetailPage({
           )}
         </div>
       </div>
-      <p className="mb-6 text-sm text-neutral-500">
+      <p className="mb-6 text-sm text-brand-ink-soft">
         {agreement.siteName} &middot; {agreement.mode === 'subcontract' ? 'Subcontract' : 'Piece Work'} &middot;{' '}
         {agreement.status === 'active' ? 'Active' : 'Closed'} &middot; {agreement.payoutMethod === 'cash' ? 'Cash' : 'Bank Transfer'}
       </p>
       {error && <div className="mb-4 rounded-md bg-red-50 px-4 py-2 text-sm text-red-700">{error}</div>}
 
-      <div className="mb-6 rounded-lg border border-neutral-200 bg-white p-4 text-sm">
+      <div className="mb-6 rounded-lg border border-brand-line bg-white p-4 text-sm">
         <p>
           Period: {agreement.periodStart} {agreement.periodEnd ? `– ${agreement.periodEnd}` : '(open-ended)'}
         </p>
@@ -107,21 +107,21 @@ export default async function PayAgreementDetailPage({
       <h2 className="mb-2 text-lg font-semibold">Assigned workers</h2>
       <table className="mb-6 w-full border-collapse text-sm">
         <thead>
-          <tr className="border-b border-neutral-200 text-left text-neutral-500">
+          <tr className="border-b border-brand-line text-left text-brand-ink-soft">
             <th className="py-2">Worker</th>
             <th className="py-2">Share</th>
           </tr>
         </thead>
         <tbody>
           {assigned.map((a) => (
-            <tr key={a.workerId} className="border-b border-neutral-100">
+            <tr key={a.workerId} className="border-b border-brand-line/70">
               <td className="py-2">{a.workerName}</td>
               <td className="py-2">{a.sharePercent !== null ? `${a.sharePercent}%` : 'equal split'}</td>
             </tr>
           ))}
           {assigned.length === 0 && (
             <tr>
-              <td colSpan={2} className="py-4 text-center text-neutral-400">
+              <td colSpan={2} className="py-4 text-center text-brand-ink-soft/70">
                 No workers assigned.
               </td>
             </tr>
@@ -136,12 +136,12 @@ export default async function PayAgreementDetailPage({
             <input type="hidden" name="_csrf" value={csrf} />
             <input type="hidden" name="payAgreementId" value={agreementId} />
             <div>
-              <label className="mb-1 block text-xs font-medium uppercase text-neutral-500">Date</label>
+              <label className="mb-1 block text-xs font-medium uppercase text-brand-ink-soft">Date</label>
               <Input name="date" type="date" required />
             </div>
             <div>
-              <label className="mb-1 block text-xs font-medium uppercase text-neutral-500">Worker (blank = team total)</label>
-              <select name="workerId" className="h-10 rounded-md border border-neutral-300 bg-white px-3 text-sm">
+              <label className="mb-1 block text-xs font-medium uppercase text-brand-ink-soft">Worker (blank = team total)</label>
+              <select name="workerId" className="h-10 rounded-md border border-brand-line bg-white px-3 text-sm">
                 <option value="">Team total</option>
                 {assigned.map((a) => (
                   <option key={a.workerId} value={a.workerId}>
@@ -151,7 +151,7 @@ export default async function PayAgreementDetailPage({
               </select>
             </div>
             <div>
-              <label className="mb-1 block text-xs font-medium uppercase text-neutral-500">Quantity ({agreement.unitLabel})</label>
+              <label className="mb-1 block text-xs font-medium uppercase text-brand-ink-soft">Quantity ({agreement.unitLabel})</label>
               <Input name="quantity" type="number" step="0.01" min="0" required className="w-28" />
             </div>
             <Button type="submit">Log</Button>
@@ -159,7 +159,7 @@ export default async function PayAgreementDetailPage({
 
           <table className="w-full border-collapse text-sm">
             <thead>
-              <tr className="border-b border-neutral-200 text-left text-neutral-500">
+              <tr className="border-b border-brand-line text-left text-brand-ink-soft">
                 <th className="py-2">Date</th>
                 <th className="py-2">Worker</th>
                 <th className="py-2">Quantity</th>
@@ -167,7 +167,7 @@ export default async function PayAgreementDetailPage({
             </thead>
             <tbody>
               {entries.map((e) => (
-                <tr key={e.id} className="border-b border-neutral-100">
+                <tr key={e.id} className="border-b border-brand-line/70">
                   <td className="py-2">{e.date}</td>
                   <td className="py-2">{e.workerName || 'Team total'}</td>
                   <td className="py-2">{e.quantity}</td>
@@ -175,7 +175,7 @@ export default async function PayAgreementDetailPage({
               ))}
               {entries.length === 0 && (
                 <tr>
-                  <td colSpan={3} className="py-4 text-center text-neutral-400">
+                  <td colSpan={3} className="py-4 text-center text-brand-ink-soft/70">
                     No output logged yet.
                   </td>
                 </tr>

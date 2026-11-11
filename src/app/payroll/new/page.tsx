@@ -17,7 +17,7 @@ export default async function NewPayrollRunPage({ searchParams }: { searchParams
   return (
     <AppShell user={user}>
       <h1 className="mb-2 text-2xl font-bold">Generate payroll run</h1>
-      <p className="mb-6 text-sm text-neutral-500">
+      <p className="mb-6 text-sm text-brand-ink-soft">
         Pick any date inside the pay period you want — it snaps to the enclosing Thursday→Wednesday week automatically.
         Every active worker is included: Daily Wage from attendance, Subcontract/Piece Work from active pay agreements,
         dispatched automatically per worker per site.
@@ -27,14 +27,14 @@ export default async function NewPayrollRunPage({ searchParams }: { searchParams
       <form action={generatePayrollAction} className="max-w-md space-y-4">
         <input type="hidden" name="_csrf" value={csrf} />
         <div>
-          <label className="mb-1 block text-xs font-medium uppercase text-neutral-500">Period start (any date in the week)</label>
+          <label className="mb-1 block text-xs font-medium uppercase text-brand-ink-soft">Period start (any date in the week)</label>
           <Input name="periodStart" type="date" defaultValue={period.start} required />
-          <p className="mt-1 text-xs text-neutral-400">
+          <p className="mt-1 text-xs text-brand-ink-soft/70">
             Current period: {period.start} → {period.end}
           </p>
         </div>
         <div>
-          <label className="mb-1 block text-xs font-medium uppercase text-neutral-500">Notes (optional)</label>
+          <label className="mb-1 block text-xs font-medium uppercase text-brand-ink-soft">Notes (optional)</label>
           <Input name="notes" />
         </div>
         <Button type="submit">Generate</Button>
