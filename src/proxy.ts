@@ -7,7 +7,7 @@
 import { NextResponse, type NextRequest } from 'next/server';
 import { ANON_CSRF_COOKIE } from '@/lib/auth/constants';
 
-export function middleware(request: NextRequest) {
+export function proxy(request: NextRequest) {
   if (request.nextUrl.pathname !== '/login') return NextResponse.next();
   if (request.cookies.get(ANON_CSRF_COOKIE)?.value) return NextResponse.next();
 
